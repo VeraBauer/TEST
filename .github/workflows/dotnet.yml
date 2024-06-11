@@ -18,9 +18,9 @@ jobs:
         with:
           dotnet-version: 6.x
       - name: Install dependencies
-        run: dotnet restore ./Spaceship__Server
+        run: dotnet restore ./Spaceship _Server
       - name: Build
-        run: dotnet build ./Spaceship__Server --configuration Release --no-restore
+        run: dotnet build ./Spaceship _Server --configuration Release --no-restore
           #- name: Test
           # run: dotnet test -p:CollectCoverage=true -p:CoverletOutput=../coverage/ -p:CoverletOutputFormat=opencover ./Spaceship.IoC.Test.No.Strategies
           #- name: Codecov
