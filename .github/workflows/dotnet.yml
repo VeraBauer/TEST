@@ -1,10 +1,12 @@
 name: .NET
 
-on: 
+on:
   workflow_dispatch:
-  
+  push:
+    branches: [ Spaceship_Move_Test, Spaceship_Rotate_Test, master, MacroBuilderSolid, EndMoveCommand, GameCommand, Stateful, Endpoint, AdapterGenerator, InterpretationMessage, InitializeNewGame, CreateGameStrategy, ooaip ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ Spaceship_Move_Test, Spaceship_Rotate_Test, master, MacroBuilderSolid, EndMoveCommand, GameCommand, Stateful, Endpoint, AdapterGenerator, InterpretationMessage, InitializeNewGame, CreateGameStrategy, ooaip ]
+
 
 jobs:
   build:
@@ -13,14 +15,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
-        uses: actions/setup-dotnet@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 6.x
-      - name: Install dependencies
-        run: dotnet restore ./Spaceship _Server
+          dotnet-version: 5.0.x
+      - name: Restore dependencies
+        run: dotnet restore
       - name: Build
-        run: dotnet build ./Spaceship _Server --configuration Release --no-restore
+        run: dotnet build --no-restore
           #- name: Test
           # run: dotnet test -p:CollectCoverage=true -p:CoverletOutput=../coverage/ -p:CoverletOutputFormat=opencover ./Spaceship.IoC.Test.No.Strategies
           #- name: Codecov
